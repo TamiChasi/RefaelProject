@@ -1,5 +1,7 @@
+using Application.Models;
 using BL;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Application.Controllers
 {
@@ -7,17 +9,18 @@ namespace Application.Controllers
     [Route("[controller]")]
     public class ViewDevices : ControllerBase
     {
-       ViewDevicesBL viewDevicesBL;
+        ViewDevicesBL viewDevicesBL;
         public ViewDevices()
         {
             viewDevicesBL = new ViewDevicesBL();
         }
 
-        //[HttpGet]
-        //public IEnumerable<Application.ViewDevices> Get()
-        //{
-        //    return viewDevicesBL.GetAll();
-        //}
+        [HttpGet]
+        public List<ViewDevice> Get()
+        {
+            return viewDevicesBL.GetAll();
+        }
+
         //[HttpGet("name/{name}")]
         //public IEnumerable<Application.ViewDevices> Get(string name)
         //{

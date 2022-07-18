@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using Application.Models;
+using DAL;
 
 namespace BL
 {
@@ -10,7 +11,7 @@ namespace BL
             viewDevicesDAL = new ViewDevicesDAL();
         }
 
-        public int GetAll()
+        public List<ViewDevice> GetAll()
         {
             return viewDevicesDAL.GetAll();
         }
