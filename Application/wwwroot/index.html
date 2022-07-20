@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tami Matzner Application</title>
+    <link rel="stylesheet" href="site.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="Js.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <h3>Add Device</h3>
+    <form action="javascript:void(0);">
+        <h5>Type:</h5>
+        <input type="text" id="type" placeholder="type">
+
+        <h5>Range:</h5>
+        <input type="number" id="mataers" placeholder="mataers">
+        <input type="number" id="aerialLine" placeholder="aerialLine">
+
+        <h5>Field Of View:</h5>
+        <input type="number" id="degrees" placeholder="degrees">
+        <input type="number" id="angle" placeholder="angle">
+        <input type="submit" value="Add" id="addDevice">
+    </form>
+
+    <h3>Delete Device</h3>
+    <input type="number" id="devideIdDelete" placeholder="device Id">
+    <button id="deleteBtn">delete</button>
+
+    <h3>Show Devices</h3>
+
+    <button id="showAllBtn">Show All</button>
+    </br>
+    <input type="text" id="showByType" placeholder="type">
+    <button id="showByTypeBtn">Show One Type</button>
+    </br>
+
+    <button id="showSortedRangeBtn">Show All - sorted by range</button>
+    </br>
+
+    <input type="number" id="showMaxMin" placeholder="minimum field">
+    <button id="showMaxMinBtn">Show max range with min field</button>
+
+    <p id="counter"></p>
+
+    <ul id="result">
+
+    </ul>
+</body>
+</html>
