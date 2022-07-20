@@ -11,26 +11,43 @@ namespace DAL
     public class ViewDevicesDAL
     {
 
-        List<ViewDevice> AppViewDevices = new List<ViewDevice>();
+        static List<ViewDevice> appViewDevices;
         public ViewDevicesDAL()
         {
-            AppViewDevices.Add(new ViewDevice(
-                new DayType(),
-                new Application.Models.Range(90, 90),
-                new FieldOfView(100, 100)
-           )); ;
+            appViewDevices = new List<ViewDevice>();
+            // appViewDevices.Add(new ViewDevice(
+            //     new Application.Models.Range(90, 90),
+            //     new DayType(),
+            //     new FieldOfView(100, 100)
+            //)); ;
 
-            AppViewDevices.Add(new ViewDevice(
-                new DayType(),
+            appViewDevices.Add(new ViewDevice(
                 new Application.Models.Range(50, 50),
+                new DayType(),
                 new FieldOfView(20, 100)
             )); ;
         }
 
+        public List<ViewDevice> GetByType(string type)
+        {
+            return (List<ViewDevice>)appViewDevices.Where(d => d.Type.TypeName == type);
+        }
+
+        public void Delete(int id)
+        {
+            IEnumerable<ViewDevice> deviceToDell = appViewDevices.Where(d => d.Id == 1);
+            appViewDevices.Remove(deviceToDell.FirstOrDefault());
+
+        }
+
+        public void AddDevice(ViewDevice viewDevice)
+        {
+            appViewDevices.Add(viewDevice);
+        }
 
         public List<ViewDevice> GetAll()
         {
-            return AppViewDevices;
+            return appViewDevices;
         }
 
 

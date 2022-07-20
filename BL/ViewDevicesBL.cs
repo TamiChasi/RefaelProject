@@ -5,7 +5,7 @@ namespace BL
 {
     public class ViewDevicesBL
     {
-        ViewDevicesDAL viewDevicesDAL;
+        static ViewDevicesDAL viewDevicesDAL;
         public ViewDevicesBL()
         {
             viewDevicesDAL = new ViewDevicesDAL();
@@ -16,5 +16,19 @@ namespace BL
             return viewDevicesDAL.GetAll();
         }
 
+        public void AddDevice(ViewDevice viewDevice)
+        {
+            viewDevicesDAL.AddDevice(viewDevice);
+        }
+
+        public void Delete(int id)
+        {
+            viewDevicesDAL.Delete(id);
+        }
+
+        public List<ViewDevice> GetByType(string type)
+        {
+            return viewDevicesDAL.GetByType(type);
+        }
     }
 }
