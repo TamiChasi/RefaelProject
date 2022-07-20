@@ -2,8 +2,8 @@
 {
     public interface Type
     {
-        public int TypeId { get; set; }
+        public int TypeId { get; }
         public int TypeCode { get; }
-        string Name { get; }
+        string TypeName { get; set; }
     }
 }

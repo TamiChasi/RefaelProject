@@ -4,7 +4,7 @@
     {
         private static int counter = 0;
 
-        public int FieldOfViewId { get; set; }
+        public int FieldOfViewId { get; }
         public decimal Engle { get; set; }
         public decimal Degrees{ get; set; }
 

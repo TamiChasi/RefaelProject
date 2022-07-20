@@ -1,18 +1,20 @@
-﻿namespace Application.Models
+﻿using Application.Models.Types;
+
+namespace Application.Models
 {
     public class ViewDevice
     {
         private static int counter = 0;
-        public int Id { get; set; }
+        public int Id { get; }
         public Type Type { get; set; }
-        public Range Rang { get; set; }
+        public Range Range { get; set; }
         public FieldOfView FieldOfView { get; set; }
 
-        public ViewDevice(Type type, Range rang, FieldOfView fieldOfView)
+        public ViewDevice( Range range, Type type, FieldOfView fieldOfView)
         {
             Id = ++counter;
             Type = type;
-            Rang = rang;
+            Range = range;
             FieldOfView = fieldOfView;
         }
         public ViewDevice()

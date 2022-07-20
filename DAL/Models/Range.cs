@@ -4,7 +4,7 @@
     {
         private static int counter = 0;
 
-        public int RangeId { get; set; }
+        public int RangeId { get; }
 
         public decimal AerialLine { get; set; }
 
