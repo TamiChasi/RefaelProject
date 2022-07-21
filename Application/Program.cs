@@ -1,3 +1,4 @@
+using Application.MiddleWares;
 using BL;
 using DAL;
 
@@ -24,6 +25,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
+app.UseHandlerErrorsMiddleware(); 
 
 app.UseHttpsRedirection();
 

@@ -1,4 +1,5 @@
 ﻿using Application.Models.Types;
+using System.ComponentModel.DataAnnotations;
 
 namespace Application.Models
 {
@@ -6,11 +7,15 @@ namespace Application.Models
     {
         private static int counter = 0;
         public int Id { get; }
-        public Type Type { get; set; }
+        [Required]
         public Range Range { get; set; }
+        [Required]
+
+        public Type Type { get; set; }
+        [Required]
         public FieldOfView FieldOfView { get; set; }
 
-        public ViewDevice( Range range, Type type, FieldOfView fieldOfView)
+        public ViewDevice(Range range, Type type, FieldOfView fieldOfView)
         {
             Id = ++counter;
             Type = type;

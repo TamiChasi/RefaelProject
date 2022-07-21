@@ -50,7 +50,7 @@ namespace BL
             return viewDevicesDAL.AddDevice(new ViewDevice(
                 new Application.Models.Range(Convert.ToDecimal(range["Meters"]), Convert.ToDecimal(range["AerialLine"])),
                 type,
-                new FieldOfView(Convert.ToDecimal( field["Degrees"]), Convert.ToDecimal(field["Engle"]))));
+                new FieldOfView(Convert.ToDecimal( field["Degrees"]), Convert.ToDecimal(field["engle"]))));
         }
 
         public void Delete(int id)

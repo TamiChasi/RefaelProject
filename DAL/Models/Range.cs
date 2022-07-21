@@ -1,4 +1,6 @@
-﻿namespace Application.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Application.Models
 {
     public class Range
     {
@@ -6,8 +8,9 @@
 
         public int RangeId { get; }
 
+        [Required]
         public decimal AerialLine { get; set; }
-
+        [Required]
         public decimal Meters { get; set; }
         public Range(decimal aerialLine, decimal meters)
         {
