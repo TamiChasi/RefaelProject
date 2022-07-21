@@ -9,8 +9,8 @@ $(document).ready(function () {
     $("#showAllBtn").click(function () {
         $.getJSON(uri)
             .done(function (data) {
+                $("#result").empty();
                 $.each(data, function (key, item) {
-                    $("#result").empty();
                     $("#result").append('<li>' + JSON.stringify(item) + '</li>');
                 });
             });
@@ -20,8 +20,8 @@ $(document).ready(function () {
         $.getJSON(uri)
             .done(function (data) {
                 data.sort((a, b) => (a.range.meters > b.range.meters) ? 1 : -1);
+                $("#result").empty();
                 $.each(data, function (key, item) {
-                    $("#result").empty();
                     $("#result").append('<li>' + JSON.stringify(item) + '</li>');
                 });
             });
@@ -32,8 +32,8 @@ $(document).ready(function () {
         var tmpUri = uri + '/minField?minField=' + minField;
         $.getJSON(tmpUri)
             .done(function (data) {
+                $("#result").empty();
                 $.each(data, function (key, item) {
-                    $("#result").empty();
                     $("#result").append('<li>' + JSON.stringify(item) + '</li>');
                 });
             });
@@ -44,8 +44,8 @@ $(document).ready(function () {
         var tmpUri = uri + '/type?type=' + type;
         $.getJSON(tmpUri)
             .done(function (data) {
+                $("#result").empty();
                 $.each(data, function (key, item) {
-                    $("#result").empty();
                     $("#result").append('<li>' + JSON.stringify(item) + '</li>');
                 });
             });
@@ -79,6 +79,8 @@ $(document).ready(function () {
             url: uri,
             data: JSON.stringify(data),
             type: 'POST',
+            contentType: "application/json",
+
             success: function (result) {
                 $("#showAllBtn").click();
             }
