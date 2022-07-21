@@ -3,6 +3,8 @@ using Application.Models.Types;
 using BL;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using Newtonsoft.Json;
+using NPOI.SS.Formula.Functions;
 
 namespace Application.Controllers
 {
@@ -10,10 +12,10 @@ namespace Application.Controllers
     [Route("[controller]")]
     public class ViewDevices : ControllerBase
     {
-        static ViewDevicesBL viewDevicesBL;
-        public ViewDevices()
+        IViewDevicesBL viewDevicesBL;
+        public ViewDevices(IViewDevicesBL ViewDevicesBL)
         {
-            viewDevicesBL = new ViewDevicesBL();
+            viewDevicesBL = ViewDevicesBL;
         }
 
         [HttpGet]
@@ -23,29 +25,10 @@ namespace Application.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Post(ViewDevice viewDevice)
+        public HttpResponseMessage Post([FromBody] Object data)
         {
-            if (ModelState.IsValid)
+            if (viewDevicesBL.AddDevice(data))
             {
-                Application.Models.Type type;
-
-                switch (viewDevice.Type.TypeName)
-                {
-                    case "Day":
-                        type = new DayType();
-                        break;
-                    case "Night":
-                        type = new NightType();
-                        break;
-                    case "Fog":
-                        type = new FogType();
-                        break;
-                    default:
-                        type = null;
-                        break;
-                }
-
-                viewDevicesBL.AddDevice(new ViewDevice(viewDevice.Range, type, viewDevice.FieldOfView));
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             else
@@ -61,11 +44,16 @@ namespace Application.Controllers
             
         }
 
-        [Route("/type/")]
-        [HttpGet]
-        public List<ViewDevice> GetByType(string type)
+        [HttpGet("type")]
+        public List<ViewDevice> GetByType([FromQuery]string type)
         {
             return viewDevicesBL.GetByType(type);
+        }
+
+        [HttpGet("minField")]
+        public ViewDevice GetMinMax([FromQuery] int minField)
+        {
+            return viewDevicesBL.GetMinMax(minField);
         }
 
     }
